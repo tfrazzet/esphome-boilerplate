@@ -65,19 +65,19 @@ This project is designed to provide a starting point for ESPHome configurations.
    cd YOUR-PROJECT_FOLDER
    ```   
 2. Customize project data in **`common/config.yaml`**
-2.1. Set node name
-2.2. Giva a friendly name (for dashboard)
-2.3. Set the location (for dashboard)
+   1. Set node name
+   2. Giv a friendly name (for dashboard)
+   3. Set the location (for dashboard)
 
-3. Include your device configuration in **`main.yaml`** packages section.
+1. Include your device configuration in **`main.yaml`** packages section.
 
-4. Rename **`secrets.yaml.template`** to **`secrets.yaml`** and insert your passwords.
+2. Rename **`secrets.yaml.template`** to **`secrets.yaml`** and insert your passwords.
 
-5. Set wifi settings in substitutions inside **`components/wifi.yaml`**.
+3. Set wifi settings in substitutions inside **`components/wifi.yaml`**.
 
-6. Customize the other components by changing the variables in the substituctions sections to suit your needs.
+4. Customize the other components by changing the variables in the substituctions sections to suit your needs.
 
-7. Connect your device and run 
+5. Connect your device and run 
    ```
    esphome run main.yaml
    ```
