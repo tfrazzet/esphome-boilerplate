@@ -1,0 +1,19 @@
+## Time Sensor Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file defines a text sensor for displaying the current time.
+## The time is updated at the interval specified by the substitution
+## variable `time_update_interval`.
+##
+## See https://esphome.io/components/text_sensor.html for more details.
+
+text_sensor:
+  - platform: template # Defines a template text sensor.
+    name: "Current Time" # The name of the text sensor.
+    id: current_time # The ID of the text sensor.
+    update_interval: $time_update_interval # The interval at which the time is updated.
+    lambda: |-
+      auto time_text = id(sntp_time).now().strftime("$time_format"); // Formats the current time.
+      return { time_text }; // Returns the formatted time.

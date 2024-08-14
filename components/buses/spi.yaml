@@ -1,0 +1,24 @@
+## SPI Bus Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file configures the SPI bus for ESPHome.
+## The SPI bus is used to communicate with various
+## sensors and devices.
+##
+## See https://esphome.io/components/spi for more details.
+
+substitutions:
+  spi_bus_id: default_bus # Manually specify the ID for this SPI bus if you need multiple SPI buses.
+  spi_clk_pin: GPIO18 # The pin used for the clock line of the SPI bus (usually GPIO18 for ESP32 and GPIO14 for ESP8266).
+  spi_bus_mosi_pin: GPIO23 # The pin used for the MOSI line of the SPI bus (usually GPIO23 for ESP32 and GPIO13 for ESP8266).
+  spi_bus_miso_pin: GPIO19 # The pin used for the MISO line of the SPI bus (usually GPIO19 for ESP32 and GPIO12 for ESP8266).
+  spi_interface: any # Controls which hardware or software SPI implementation should be used. Value may be one of any (default), software, hardware, spi, spi2 or spi3, depending on the type and the particular chip used.
+
+spi:
+  - id: ${spi_bus_id} # The ID of the SPI bus.
+    clk_pin: ${spi_clk_pin} # The pin used for the clock line of the SPI bus.
+    mosi_pin: ${spi_bus_mosi_pin} # The pin used for the MOSI line of the SPI bus.
+    miso_pin: ${spi_bus_miso_pin} # The pin used for the MISO line of the SPI bus.
+    interface: ${spi_interface} # The SPI implementation to be used.

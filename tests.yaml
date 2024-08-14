@@ -1,0 +1,37 @@
+## Tests Configuration File
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+
+# Define fonts to be used in the display
+font:
+  - file: "gfonts://Roboto@Regular" # Path to the Roboto Regular font
+    id: font_roboto_regular_16 # ID for the font
+    size: 16 # Font size
+
+  - file: "gfonts://Roboto@Medium" # Path to the Roboto Medium font
+    id: font_roboto_medium_16 # ID for the font
+    size: 16 # Font size
+
+# Configuration for the SSD1306 display
+display:
+  - platform: ssd1306_i2c # Use the SSD1306 I2C platform
+    id: ssd1306 # ID for the display
+    model: "SSD1306 128x64" # Model of the display
+    address: 0x3C # I2C address of the display
+    update_interval: 1s # Update the display every second
+    lambda: |-
+      # Display the current date and time if the SNTP time is valid
+      if (id(sntp_time).now().is_valid()) {
+        it.printf(0, 0, id(font_roboto_medium_16), "%s", id(current_date).state.c_str()); // Print the current date on left
+        it.printf(85, 0, id(font_roboto_medium_16), "%s", id(current_time).state.c_str()); //  Print the current time on right
+      }
+
+# Interval configuration to log the last sync time and date every 10 seconds
+interval:
+  - interval: 10s # Execute the following actions every 10 seconds
+    then:
+      - logger.log:
+          level: INFO # Set the log level to INFO
+          format: "Last sync time: %s, Last sync date: %s" # Log message format
+          args: [id(current_time).state.c_str(), id(current_date).state.c_str()] # Arguments to be included in the log message

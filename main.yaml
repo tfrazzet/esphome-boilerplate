@@ -1,0 +1,30 @@
+## Main ESPHome Configuration File
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This is the main configuration file for the ESPHome project.
+## It defines the device used and imports all necessary
+## components and automations.
+##
+## See: https://esphome.io/components/esphome for more details.
+
+<<: !include common/config.yaml # Include common configuration settings.
+
+esphome:
+  name: "${name}" # The name of the ESPHome device.
+  friendly_name: "${friendly_name}" # A friendly name for the ESPHome device.
+  area: "${area}" # The area where the ESPHome device is located.
+
+packages:
+  device: !include devices/esp32.yaml # Include the device-specific configuration for ESP32.
+  logger: !include components/logger.yaml # Include the logger component configuration.
+  network: !include components/wifi.yaml # Include the WiFi network configuration.
+  i2c: !include components/buses/i2c.yaml # Include the I2C bus configuration.
+  spi: !include components/buses/spi.yaml # Include the SPI bus configuration.
+  time: !include components/time.yaml # Include the time component configuration.
+
+  time_sensor: !include components/sensors/time.yaml # Include the time sensor configuration.
+  date_sensor: !include components/sensors/date.yaml # Include the date sensor configuration.
+
+<<: !include tests.yaml # Include additional tests configuration settings.

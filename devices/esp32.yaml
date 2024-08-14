@@ -1,0 +1,14 @@
+## ESP32 Configuration Type for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file contains the base configuration for ESP32 devices.
+##
+## See https://esphome.io/components/esp32 for more details.
+
+esp32:
+  board: nodemcu-32s # Specify the board type. Here, 'nodemcu-32s' is used.
+  framework:
+    type: arduino # Define the framework type. 'arduino' is chosen for this configuration.
+    version: recommended # Use the recommended version of the Arduino framework.

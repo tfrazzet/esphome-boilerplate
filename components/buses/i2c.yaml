@@ -1,0 +1,21 @@
+##  I²C Bus Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file configures the I²C bus for ESPHome.
+## The I²C bus is used to communicate with various
+## sensors and devices.
+##
+## See https://esphome.io/components/i2c.html for more details.
+
+substitutions:
+  i2c_bus_id: default_bus # Manually specify the ID for this I²C bus if you need multiple I²C buses.
+  i2c_bus_sda: GPIO21 # The pin for the data line of the I²C bus. Defaults to the default of your board (usually GPIO21 for ESP32 and GPIO4 for ESP8266).
+  i2c_bus_scl: GPIO22 # The pin for the clock line of the I²C bus. Defaults to the default of your board (usually GPIO22 for ESP32 and GPIO5 for ESP8266).
+  i2c_bus_scan: "true" # If ESPHome should do a search of the I²C address space on startup. Defaults to true.
+
+i2c:
+  sda: $i2c_bus_sda # The pin for the data line of the I²C bus.
+  scl: $i2c_bus_scl # The pin for the clock line of the I²C bus.
+  scan: $i2c_bus_scan # If ESPHome should do a search of the I²C address space on startup.

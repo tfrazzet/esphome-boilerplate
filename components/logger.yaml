@@ -1,0 +1,18 @@
+## Logger Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file configures the logger component for ESPHome.
+## The logger component is used to log messages to the
+## serial console.
+##
+## See https://esphome.io/components/logger.html for more details.
+
+substitutions:
+  log_baud_rate: "115200" # The baud rate to use for the serial UART port. Defaults to 115200. Set to 0 to disable logging via UART.
+  log_level: DEBUG # The global log level. Any log message with a lower severity will not be shown.
+
+logger:
+  baud_rate: $log_baud_rate # The baud rate for the serial UART port.
+  level: $log_level # The global log level.

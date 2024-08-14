@@ -1,0 +1,13 @@
+## Substitutions Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This section contains substitution variables for ESPHome component.
+##
+## See https://esphome.io/components/esphome for more details.
+
+substitutions:
+  name: "node-name" # This is the name of the node. It should always be unique in your ESPHome network. May only contain lowercase characters, digits and hyphens, and can be at most 24 characters long by default, or 31 characters long if name_add_mac_suffix is false.
+  friendly_name: "Friendly Name" # This is the name sent to the frontend. It is used by Home Assistant as the integration name, device name, and is automatically prefixed to entities where necessary.
+  area: "Component Area" # This is the area sent to the frontend. It is used by Home Assistant as the area / zone which the node belongs to.

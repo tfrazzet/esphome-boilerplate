@@ -1,0 +1,13 @@
+## ESP8266 Configuration Type for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file contains the base configuration for ESP8266 devices.
+##
+## See https://esphome.io/components/esp8266 for more details.
+
+esp8266:
+  board: nodemcuv2 # Specify the board type. Here, 'nodemcuv2' is used.
+  framework:
+    version: recommended # Use the recommended version of the framework.

@@ -1,0 +1,31 @@
+## Time Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file configures the time component for ESPHome.
+## The time component is used to synchronize the time with an SNTP server.
+##
+## See https://esphome.io/components/time/#base-time-config for more details.
+
+substitutions:
+  time_platform: sntp # The platform for the time component.
+  time_timezone: Europe/Rome # The timezone for the time component.
+  date_update_interval: 5s # The interval at which the date is updated.
+  time_update_interval: 5s # The interval at which the time is updated.
+  date_format: "%d/%m" # Date default format
+  time_format: "%H:%M" ## Date default format
+
+time:
+  - platform: $time_platform # The platform for the time component.
+    id: sntp_time # The ID of the time component.
+    timezone: $time_timezone # The timezone for the time component.
+    on_time_sync:
+      then:
+        - logger.log: "Synchronized sntp clock" # Logs a message when the time is synchronized.
+        - text_sensor.template.publish:
+            id: current_time # Publishes the current time.
+            state: "Sync Time" # The state to be published.
+        - text_sensor.template.publish:
+            id: current_date # Publishes the current date.
+            state: "Sync Date" # The state to be published.

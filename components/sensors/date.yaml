@@ -1,0 +1,19 @@
+## Date Sensor Configuration for ESPHome
+##
+## Author: Tommaso Frazzetto <tommaso.frazzetto@gmail.com>
+## Version: 1.0
+##
+## This file defines a text sensor for displaying the current date.
+## The date is updated at the interval specified by the substitution
+## variable `date_update_interval`.
+##
+## See https://esphome.io/components/text_sensor.html for more details.
+
+text_sensor:
+  - platform: template # Defines a template text sensor.
+    name: "Current Date" # The name of the text sensor.
+    id: current_date # The ID of the text sensor.
+    update_interval: $date_update_interval # The interval at which the date is updated.
+    lambda: |-
+      auto date_text = id(sntp_time).now().strftime("$date_format"); // Formats the current date.
+      return { date_text }; // Returns the formatted date.
